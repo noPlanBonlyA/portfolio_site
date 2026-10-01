@@ -180,10 +180,10 @@ export const projects: Project[] = [
     role: "Full Stack Developer (Middle+)",
     stack: ["NestJS", "React", "TypeScript", "REST API", "RBAC", "Microfrontends", "AI"],
     description:
-      "End-to-end ownership of five internal services, including enterprise web applications, a chatbot and workflow optimization tools.",
+      "Responsible for development and support of 5+ internal services, including enterprise web applications, a chatbot and workflow optimization tools.",
     highlights: [
       "Integrated microfrontends into a unified enterprise platform",
-      "Owned frontend, backend and cross-service delivery for five services",
+      "Responsible for frontend, backend and cross-service delivery for 5+ services",
       "Led practical AI adoption seminars for development teams across company centers",
     ],
     preview: "enterprise",
@@ -240,6 +240,7 @@ export const projects: Project[] = [
       "Optimized SQL queries",
       "Configured server-side caching",
       "Improved frontend interactions with AJAX",
+      "Page load time reduced from 10-20 s to ~1 s; Google PageSpeed improved from 40 to 97",
     ],
     preview: "commerce",
     actions: placeholderActions,
@@ -296,7 +297,7 @@ export const skillStories: SkillStory[] = [
         period: "September 2025 - Present",
         title: "Enterprise frontend architecture",
         impact:
-          "Own frontend delivery across five internal services that need to remain maintainable inside a larger enterprise ecosystem.",
+          "Responsible for frontend delivery across 5+ internal services that need to remain maintainable inside a larger enterprise ecosystem.",
         tasks: [
           "Build React application modules using Feature-Sliced Design principles.",
           "Integrate microfrontends and define stable boundaries between independently delivered modules.",
@@ -365,7 +366,7 @@ export const skillStories: SkillStory[] = [
         period: "September 2025 - Present",
         title: "Internal services, chatbot and integration APIs",
         impact:
-          "Own backend delivery and reliable operation across five services, including a chatbot and workflow optimization tools.",
+          "Responsible for backend delivery and reliable operation across 5+ services, including a chatbot and workflow optimization tools.",
         tasks: [
           "Build NestJS modules, controllers and services for internal workflows.",
           "Implement REST endpoints, service integrations and role-based access logic.",
@@ -473,9 +474,9 @@ export const skillStories: SkillStory[] = [
         company: "Gazprom / Gazekonomika",
         role: "Full Stack Developer (Middle+)",
         period: "September 2025 - Present",
-        title: "Service ownership and practical AI adoption",
+        title: "Service responsibility and practical AI adoption",
         impact:
-          "Combine hands-on ownership of five services with knowledge sharing that helps development teams apply AI to everyday engineering work.",
+          "Combine hands-on responsibility for 5+ services with knowledge sharing that helps development teams apply AI to everyday engineering work.",
         tasks: [
           "Coordinate frontend, backend and integration work across several internal products.",
           "Take ownership of technically complex tasks and carry them from design through delivery.",
@@ -622,7 +623,7 @@ export const experience: ExperienceItem[] = [
     period: "September 2025 - Present",
     type: "Commercial",
     points: [
-      "Own end-to-end development and reliable operation of five internal services, covering React interfaces, NestJS APIs and business logic.",
+      "Responsible for end-to-end development and reliable operation of 5+ internal services, covering React interfaces, NestJS APIs and business logic.",
       "Integrate microfrontends into a unified enterprise environment, aligning module boundaries, shared flows and access control.",
       "Develop and support a corporate chatbot and optimization services that automate routine workflows for internal teams.",
       "Independently deliver middle+ scope tasks, from technical design and cross-service integration to refactoring and performance improvements.",
@@ -681,7 +682,7 @@ export const experience: ExperienceItem[] = [
   {
     company: "Driving School of Unified Standard",
     role: "Full Stack Developer / Technical Administrator",
-    period: "November 2022-December 2024",
+    period: "November 2022 - December 2024",
     type: "Commercial",
     points: [
       "Launched and maintained an adaptive WordPress corporate website.",

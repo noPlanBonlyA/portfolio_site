@@ -197,7 +197,7 @@ function CommercePreview() {
             </div>
           </div>
           <div className="rounded-md border border-emerald-300/20 bg-emerald-300/10 px-3 py-2 text-emerald-100">
-            +38% perf
+            10-20s → ~1s
           </div>
         </div>
         <div className="grid grid-cols-[4rem_1fr] gap-2">
