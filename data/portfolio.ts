@@ -177,14 +177,14 @@ export const projects: Project[] = [
     title: "Enterprise Internal Systems",
     company: "Research Institute Gazekonomika",
     type: "Commercial / Enterprise",
-    role: "Full Stack Developer",
-    stack: ["NestJS", "React", "TypeScript", "REST API", "RBAC", "Microfrontends"],
+    role: "Full Stack Developer (Middle+)",
+    stack: ["NestJS", "React", "TypeScript", "REST API", "RBAC", "Microfrontends", "AI"],
     description:
-      "Internal digital systems and enterprise web applications with role-based access, REST APIs and modular frontend integration.",
+      "End-to-end ownership of five internal services, including enterprise web applications, a chatbot and workflow optimization tools.",
     highlights: [
-      "Built full stack features with NestJS and React",
-      "Implemented REST API endpoints and business logic",
-      "Worked with RBAC and enterprise security flows",
+      "Integrated microfrontends into a unified enterprise platform",
+      "Owned frontend, backend and cross-service delivery for five services",
+      "Led practical AI adoption seminars for development teams across company centers",
     ],
     preview: "enterprise",
     actions: placeholderActions,
@@ -292,14 +292,14 @@ export const skillStories: SkillStory[] = [
     examples: [
       {
         company: "Gazprom / Gazekonomika",
-        role: "Middle Full Stack Developer",
-        period: "September 2025 - Now",
+        role: "Full Stack Developer (Middle+)",
+        period: "September 2025 - Present",
         title: "Enterprise frontend architecture",
         impact:
-          "Built internal product interfaces that had to stay maintainable inside a larger enterprise system.",
+          "Own frontend delivery across five internal services that need to remain maintainable inside a larger enterprise ecosystem.",
         tasks: [
-          "Created React application modules using Feature-Sliced Design principles.",
-          "Worked with microfrontend-style integration and modular UI boundaries.",
+          "Build React application modules using Feature-Sliced Design principles.",
+          "Integrate microfrontends and define stable boundaries between independently delivered modules.",
           "Built role-aware screens connected to REST APIs and RBAC flows.",
         ],
         tools: ["React", "TypeScript", "FSD", "Microfrontends", "REST API", "RBAC"],
@@ -361,17 +361,17 @@ export const skillStories: SkillStory[] = [
     examples: [
       {
         company: "Gazprom / Gazekonomika",
-        role: "Middle Full Stack Developer",
-        period: "September 2025 - Now",
-        title: "Internal REST APIs and RBAC logic",
+        role: "Full Stack Developer (Middle+)",
+        period: "September 2025 - Present",
+        title: "Internal services, chatbot and integration APIs",
         impact:
-          "Implemented backend pieces for enterprise systems where permissions, data contracts and reliability mattered.",
+          "Own backend delivery and reliable operation across five services, including a chatbot and workflow optimization tools.",
         tasks: [
-          "Built NestJS modules, controllers and services for internal workflows.",
-          "Implemented REST endpoints consumed by React applications.",
-          "Worked with role-based access logic and enterprise data constraints.",
+          "Build NestJS modules, controllers and services for internal workflows.",
+          "Implement REST endpoints, service integrations and role-based access logic.",
+          "Handle middle+ scope tasks independently, from technical design to production-ready delivery.",
         ],
-        tools: ["NestJS", "Node.js", "TypeScript", "REST API", "RBAC", "PostgreSQL"],
+        tools: ["NestJS", "Node.js", "TypeScript", "REST API", "RBAC", "PostgreSQL", "AI"],
       },
       {
         company: "ITMO University Startup Project",
@@ -469,6 +469,20 @@ export const skillStories: SkillStory[] = [
     signal: "LEAD",
     stack: ["Task breakdown", "Code review", "Architecture discussion", "Delivery planning", "AI-assisted prototyping"],
     examples: [
+      {
+        company: "Gazprom / Gazekonomika",
+        role: "Full Stack Developer (Middle+)",
+        period: "September 2025 - Present",
+        title: "Service ownership and practical AI adoption",
+        impact:
+          "Combine hands-on ownership of five services with knowledge sharing that helps development teams apply AI to everyday engineering work.",
+        tasks: [
+          "Coordinate frontend, backend and integration work across several internal products.",
+          "Take ownership of technically complex tasks and carry them from design through delivery.",
+          "Run seminars across company centers on using AI for analysis, implementation, testing and documentation.",
+        ],
+        tools: ["Technical ownership", "Architecture", "AI enablement", "Knowledge sharing", "Full stack delivery"],
+      },
       {
         company: "SENAT AI",
         role: "Team Lead / Full Stack Developer",
@@ -604,15 +618,17 @@ export const experience: ExperienceItem[] = [
   {
     company: "Research Institute Gazekonomika",
     department: "Center for Digital Information",
-    role: "Middle Full Stack Developer",
-    period: "September 2025 - Now",
+    role: "Full Stack Developer (Middle+)",
+    period: "September 2025 - Present",
     type: "Commercial",
     points: [
-      "Developed internal enterprise systems with React and NestJS.",
-      "Worked on REST APIs, RBAC flows and modular frontend integration.",
-      "Delivered features inside practical business and security constraints.",
+      "Own end-to-end development and reliable operation of five internal services, covering React interfaces, NestJS APIs and business logic.",
+      "Integrate microfrontends into a unified enterprise environment, aligning module boundaries, shared flows and access control.",
+      "Develop and support a corporate chatbot and optimization services that automate routine workflows for internal teams.",
+      "Independently deliver middle+ scope tasks, from technical design and cross-service integration to refactoring and performance improvements.",
+      "Run practical seminars across company centers on adopting AI to accelerate software analysis, implementation, testing and documentation.",
     ],
-    stack: ["React", "NestJS", "TypeScript", "REST API", "RBAC"],
+    stack: ["React", "NestJS", "TypeScript", "Microfrontends", "REST API", "RBAC", "AI"],
   },
   {
     company: "SENAT AI",
@@ -731,27 +747,22 @@ export const workSteps: WorkStep[] = [
 export const contacts: ContactItem[] = [
   {
     label: "Email",
-    value: "andrey.dmitriev@example.com",
-    href: "mailto:andrey.dmitriev@example.com",
+    value: "andrey.spb521@gmail.com",
+    href: "mailto:andrey.spb521@gmail.com",
     icon: "mail",
   },
   // TODO: Replace placeholders with real public profile links.
   {
     label: "Telegram",
-    value: "@telegram_placeholder",
+    value: "@noPlanBonlyA",
     href: "#",
     icon: "telegram",
   },
   {
     label: "GitHub",
-    value: "github.com/andrey-placeholder",
-    href: "#",
+    value: "github.com/noPlanBonlyA",
+    href: "https://github.com/noPlanBonlyA",
     icon: "github",
   },
-  {
-    label: "LinkedIn",
-    value: "linkedin.com/in/andrey-placeholder",
-    href: "#",
-    icon: "linkedin",
-  },
+ 
 ];
