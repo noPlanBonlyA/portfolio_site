@@ -17,10 +17,12 @@ export const profile = {
   photoAlt: "Andrey Dmitriev on a balcony in Saint Petersburg",
   /** Two sentences from the CV summary, used as the README lead. */
   lead: "Full Stack Developer working in web development since 2022. I cover the full cycle: API and database design, frontend, CI/CD and deployment.",
+  /** Phone home screen: the same lead, shortened. */
+  leadShort: "In web development since 2022. API and database design, frontend, CI/CD and deployment.",
   metrics: [
-    { value: "200–300", label: "DAILY ENTERPRISE USERS" },
-    { value: "5+", label: "SERVICES IN PRODUCTION" },
-    { value: "Team of 7", label: "LED TO DELIVERY" },
+    { value: "200–300", label: "DAILY ENTERPRISE USERS", short: "DAILY USERS" },
+    { value: "5+", label: "SERVICES IN PRODUCTION", short: "SERVICES" },
+    { value: "Team of 7", label: "LED TO DELIVERY", short: "LED" },
   ],
   marquee: [
     "React", "Next.js", "NestJS", "TypeScript", "FastAPI", "PostgreSQL",

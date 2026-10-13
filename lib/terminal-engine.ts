@@ -34,6 +34,8 @@ export interface TermResult {
 
 interface Ctx {
   retro?: boolean;
+  /** Phone layout: shorter neofetch. */
+  compact?: boolean;
   now?: Date;
 }
 
@@ -69,7 +71,7 @@ export function runCommand(raw: string, ctx: Ctx = {}): TermResult {
   } else if (lc === "contact") {
     T.contact.forEach((l) => out(l));
   } else if (lc === "neofetch") {
-    T.neofetch.forEach((l) => out(l, "acc"));
+    (ctx.compact ? T.neofetchCompact : T.neofetch).forEach((l) => out(l, "acc"));
   } else if (lc === "date") {
     out((ctx.now ?? new Date()).toString());
   } else if (lc.startsWith("cat ")) {

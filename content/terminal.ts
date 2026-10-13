@@ -36,6 +36,13 @@ export const terminalCopy = {
     "                  Users: 200–300 daily (enterprise)",
     "                  Location: Saint Petersburg",
   ],
+  /** Narrow screens: logo + the essentials only. */
+  neofetchCompact: [
+    "   ___   ___    andrey@andrey.os",
+    "  / _ | / _ \\   OS: andrey.os v2026.10",
+    " / __ |/ // /   Role: Full Stack Developer",
+    "/_/ |_/____/    Uptime: since 2022",
+  ],
   coffee: [
     "[sudo] password for recruiter: ********",
     "      ( (",

@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { musicCopy, processes, taskCopy, trashCopy, trashItems } from "@/content/apps";
 import { botChips, botCopy } from "@/content/bot";
-import { botAnswer } from "@/lib/bot-engine";
+import { useBotChat } from "@/hooks/useBotChat";
 import { useOs } from "@/store/os";
 
 import { WindowFrame } from "./WindowFrame";
@@ -85,16 +85,15 @@ export function TaskManager() {
 
 /* ---------- Messages: Andrey.bot ---------- */
 
-interface Msg {
-  text: string;
-  me: boolean;
-}
-
 export function Messages() {
   const markDone = useOs((s) => s.markDone);
   const beep = useOs((s) => s.beep);
-  const [msgs, setMsgs] = useState<Msg[]>([{ text: botCopy.greeting, me: false }]);
-  const [typing, setTyping] = useState(false);
+  const onSend = useCallback(() => {
+    markDone("bot");
+    beep(820, 0.03);
+  }, [markDone, beep]);
+  const onReply = useCallback(() => beep(560, 0.05), [beep]);
+  const { msgs, typing, send: sendMsg } = useBotChat(onSend, onReply);
   const [input, setInput] = useState("");
   const out = useRef<HTMLDivElement>(null);
 
@@ -104,18 +103,7 @@ export function Messages() {
   }, [msgs, typing]);
 
   const send = (text: string) => {
-    const q = text.trim();
-    if (!q || typing) return;
-    markDone("bot");
-    beep(820, 0.03);
-    setMsgs((m) => [...m, { text: q, me: true }]);
-    setInput("");
-    setTyping(true);
-    setTimeout(() => {
-      setTyping(false);
-      setMsgs((m) => [...m, { text: botAnswer(q), me: false }]);
-      beep(560, 0.05);
-    }, 900);
+    if (sendMsg(text)) setInput("");
   };
 
   return (
