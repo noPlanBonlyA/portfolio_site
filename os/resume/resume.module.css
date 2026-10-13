@@ -1,0 +1,196 @@
+.res {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  overflow: auto;
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(236, 235, 230, 0.07) 1px, transparent 1px);
+  background-size: var(--dots-size);
+  animation: fadein 0.35s ease both;
+}
+
+.res:focus {
+  outline: none;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- toolbar ---------- */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  padding: 12px clamp(16px, 3vw, 32px);
+  background: rgba(11, 11, 12, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(236, 235, 230, 0.24);
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+
+.lang {
+  display: flex;
+  border: 1px solid rgba(236, 235, 230, 0.24);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lang button {
+  min-height: 38px;
+  padding: 0 14px;
+}
+
+.lang .on {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.download {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* ---------- printer ---------- */
+.printerWrap {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: clamp(16px, 3vw, 32px) auto 0;
+  padding: 0 clamp(0px, 2vw, 20px);
+}
+
+.printer {
+  position: relative;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  background: var(--bg-input);
+  border: 1px solid rgba(236, 235, 230, 0.14);
+  border-radius: 10px 10px 4px 4px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  overflow: hidden;
+  animation: printer 3.4s ease both;
+}
+
+@keyframes printer {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10%,
+  80% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 0.5s steps(1) infinite;
+}
+
+.head {
+  position: absolute;
+  left: 180px;
+  bottom: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  animation: head 2.6s linear 0.35s both;
+}
+
+@keyframes head {
+  0%,
+  50%,
+  100% {
+    left: 180px;
+  }
+  25%,
+  75% {
+    left: calc(100% - 74px);
+  }
+}
+
+/* ---------- paper ---------- */
+.paper {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 80px;
+  animation: printout 2.6s steps(26) 0.35s both;
+}
+
+@keyframes printout {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-40px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+/* Ctrl+P on the resume prints just the sheet. */
+@media print {
+  .bar,
+  .printerWrap {
+    display: none;
+  }
+
+  .res {
+    position: static;
+    overflow: visible;
+    background: #fff;
+  }
+
+  .paper {
+    animation: none;
+    margin: 0;
+  }
+}

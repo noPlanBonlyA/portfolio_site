@@ -19,17 +19,32 @@ interface Props {
   title?: string;
   className?: string;
   id?: string;
+  /** h1 on the standalone /cv page; h2 inside the OS, where the page already has an h1. */
+  heading?: "h1" | "h2";
+}
+
+/** Animated text for sighted users, the final string for screen readers. */
+function Live({ shown, final }: { shown?: string; final: string }) {
+  if (shown === undefined || shown === final) return <>{final}</>;
+  return (
+    <>
+      <span aria-hidden="true">{shown}</span>
+      <span className="sr-only">{final}</span>
+    </>
+  );
 }
 
 /** The light "printed" CV sheet. Pure markup — usable from server and client components. */
-export function ResumePaper({ resume: r, name, title, className, id }: Props) {
+export function ResumePaper({ resume: r, name, title, className, id, heading: H = "h1" }: Props) {
   return (
     <article id={id} lang={r.lang} className={[styles.paper, className].filter(Boolean).join(" ")}>
       <header className={styles.header}>
         <div>
-          <h1 className={styles.name}>{name ?? r.name}</h1>
+          <H className={styles.name}>
+            <Live shown={name} final={r.name} />
+          </H>
           <p className={styles.title}>
-            {title ?? r.title} <span className={styles.titleStack}>{r.titleStack}</span>
+            <Live shown={title} final={r.title} /> <span className={styles.titleStack}>{r.titleStack}</span>
           </p>
         </div>
         <span className={styles.mark} aria-hidden="true" />

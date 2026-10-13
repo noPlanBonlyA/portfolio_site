@@ -63,27 +63,6 @@
   color: var(--danger);
 }
 
-/* temporary stub until the IDE / resume land (steps 3–4) */
-.stub {
-  position: absolute;
-  inset: 0;
-  z-index: 50;
-  display: grid;
-  place-items: center;
-  text-align: center;
-}
-
-.stubCard {
-  padding: 28px 32px;
-  background: var(--bg-raised);
-  border: 1px solid var(--line-2);
-  border-radius: 12px;
-}
-
-.stubCard p + p {
-  margin-top: 16px;
-}
-
 @keyframes fade {
   from {
     opacity: 0;

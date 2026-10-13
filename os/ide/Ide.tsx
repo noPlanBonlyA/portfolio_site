@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
-import { themes } from "@/content/ide";
+import { ideCopy, themes } from "@/content/ide";
+import { useScramble } from "@/hooks/useScramble";
 import { useOs } from "@/store/os";
 
 import { Editor, Tabs } from "./Editor";
@@ -25,6 +26,22 @@ function useIconOrigin() {
   return origin;
 }
 
+/** Summarize, part 1: a lime beam sweeps the IDE while the label scrambles in. */
+function ScanOverlay() {
+  const [text, play] = useScramble(ideCopy.scan);
+  useEffect(() => play(), [play]);
+  return (
+    <>
+      <div className={styles.scan} aria-hidden="true" />
+      <div className={styles.scanLabel} role="status">
+        <span aria-hidden="true">{text}</span>
+        <span className="sr-only">{ideCopy.scan}</span>
+        <span className="caret" aria-hidden="true" />
+      </div>
+    </>
+  );
+}
+
 /**
  * portfolio.ide. Always mounted once loaded so it can animate out of the desktop icon;
  * `inert` while closed. Phases scan/shrink/resume are driven by Summarize (step 4).
@@ -36,6 +53,11 @@ export default function Ide() {
   const t = themes[theme];
 
   const open = phase === "ide" || phase === "scan";
+
+  // Warm the resume chunk so Summarize never waits on the network.
+  useEffect(() => {
+    if (open) void import("../resume/ResumeView");
+  }, [open]);
 
   // Keyboard users land in the IDE on open and back on the desktop icon on close.
   const wasOpen = useRef(open);
@@ -71,6 +93,7 @@ export default function Ide() {
     <section className={styles.ide} data-state={state} style={vars} inert={!open} aria-label="portfolio.ide">
       <TitleBar />
       <div className={styles.body}>
+        {phase === "scan" && <ScanOverlay />}
         <ActivityBar />
         <Explorer />
         <div className={styles.main}>
@@ -80,6 +103,7 @@ export default function Ide() {
         </div>
       </div>
       <StatusBar />
+      <div className={styles.whiteout} aria-hidden="true" />
     </section>
   );
 }

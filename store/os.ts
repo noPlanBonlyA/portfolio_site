@@ -97,6 +97,7 @@ function write(key: string, value: unknown) {
   }
 }
 
+let summarizeTimer: ReturnType<typeof setTimeout> | undefined;
 let runTimers: ReturnType<typeof setTimeout>[] = [];
 let toastTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -280,10 +281,30 @@ export const useOs = create<OsState>()((set, get) => ({
     }
   },
 
-  // Step 4 replaces this with the scan → shrink → print transition.
+  /**
+   * IDE → CV: a scan beam sweeps the IDE (1 s), the window shrinks into a white sheet,
+   * then the resume "prints". From the desktop or the resume, the IDE opens first.
+   */
   summarize: () => {
+    const { phase } = get();
+    if (phase === "scan" || phase === "shrink") return;
+    clearTimeout(summarizeTimer);
+    if (phase === "desktop" || phase === "resume") {
+      get().openIde();
+      summarizeTimer = setTimeout(() => get().summarize(), 800);
+      return;
+    }
     get().markDone("summarize");
-    get().goResume();
+    const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      set({ phase: "resume", palOpen: false });
+      return;
+    }
+    set({ phase: "scan", palOpen: false });
+    summarizeTimer = setTimeout(() => {
+      set({ phase: "shrink" });
+      summarizeTimer = setTimeout(() => set({ phase: "resume" }), 650);
+    }, 1000);
   },
 
   askTrash: () => {

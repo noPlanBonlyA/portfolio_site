@@ -31,6 +31,57 @@
   pointer-events: none;
 }
 
+/* ---------- summarize ---------- */
+.scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -160px;
+  height: 160px;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--accent) 28%, transparent) 70%, var(--accent) 100%);
+  animation: scan 1s cubic-bezier(0.6, 0, 0.4, 1) both;
+}
+
+@keyframes scan {
+  to {
+    top: 100%;
+  }
+}
+
+.scanLabel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  padding: 14px 22px;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* The IDE turns into a blank sheet as it shrinks. */
+.whiteout {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  background: var(--paper);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.ide[data-state="shrink"] .whiteout,
+.ide[data-state="gone"] .whiteout {
+  opacity: 1;
+}
+
 .ide ::selection {
   background: var(--accent);
   color: var(--on-accent);

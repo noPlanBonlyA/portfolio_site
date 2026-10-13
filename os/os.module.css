@@ -6,3 +6,14 @@
   color: var(--text);
   font-family: var(--font-mono);
 }
+
+@media print {
+  .os {
+    position: static;
+    overflow: visible;
+  }
+
+  .os > :not([data-print-root]) {
+    display: none !important;
+  }
+}
