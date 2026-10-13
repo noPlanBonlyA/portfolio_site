@@ -3,7 +3,8 @@
 import { create } from "zustand";
 
 import { trashCopy, type WinId } from "@/content/apps";
-import { themeOrder, type FileId, type ThemeId } from "@/content/ide";
+import { fileById, ideCopy, isProjectFile, themeOrder, themes, type FileId, type ThemeId } from "@/content/ide";
+import { projectById, runKind, type RunLine } from "@/content/projects";
 import { quests, type QuestId } from "@/content/quests";
 import { osCopy } from "@/content/os";
 import type { Lang } from "@/content/resume";
@@ -39,6 +40,12 @@ interface OsState {
   trashAsk: boolean;
   /** Bumped to send the photo window back home; `shake` plays the "protected file" shake. */
   photoReset: { n: number; shake: boolean };
+  /** IDE bottom panel. */
+  termTab: "terminal" | "problems";
+  /** ▶ RUN output; a `bar` line renders the animated page-load bar in place. */
+  run: { lines: { text: string; kind: RunLine["kind"] | "bar" }[] };
+  /** Matches of the selected word in the editor (status bar). */
+  hlCount: number;
 
   hydrate: () => void;
   setBoot: (boot: Boot) => void;
@@ -61,6 +68,12 @@ interface OsState {
   setHintDone: () => void;
   openIde: (file?: FileId) => void;
   goResume: () => void;
+  openFile: (file: FileId) => void;
+  closeFile: (file: FileId) => void;
+  setTermTab: (tab: OsState["termTab"]) => void;
+  runFile: () => void;
+  setHlCount: (n: number) => void;
+  summarize: () => void;
   askTrash: () => void;
   keepPhoto: () => void;
   deletePhoto: () => void;
@@ -84,6 +97,7 @@ function write(key: string, value: unknown) {
   }
 }
 
+let runTimers: ReturnType<typeof setTimeout>[] = [];
 let toastTimer: ReturnType<typeof setTimeout> | undefined;
 
 export const useOs = create<OsState>()((set, get) => ({
@@ -105,6 +119,9 @@ export const useOs = create<OsState>()((set, get) => ({
   activeFile: "readme",
   trashAsk: false,
   photoReset: { n: 0, shake: false },
+  termTab: "terminal",
+  run: { lines: [] },
+  hlCount: 0,
 
   /** Runs once on mount: restores achievements and skips BIOS for returning visitors. */
   hydrate: () => {
@@ -138,8 +155,10 @@ export const useOs = create<OsState>()((set, get) => ({
     set((s) => (s.z[id] === s.zTop - 1 ? s : { z: { ...s.z, [id]: s.zTop }, zTop: s.zTop + 1 })),
 
   setTheme: (theme) => {
-    if (theme !== get().theme) get().markDone("theme");
+    if (theme === get().theme) return;
+    get().markDone("theme");
     set({ theme });
+    get().showToast(osCopy.theme(themes[theme].name));
   },
   cycleTheme: () => {
     const i = themeOrder.indexOf(get().theme);
@@ -209,6 +228,63 @@ export const useOs = create<OsState>()((set, get) => ({
   },
 
   goResume: () => set({ phase: "resume", hintDone: true, palOpen: false }),
+
+  openFile: (file) => {
+    if (!fileById(file)) return;
+    get().beep(760, 0.02);
+    set((s) => ({
+      activeFile: file,
+      openFiles: s.openFiles.includes(file) ? s.openFiles : [...s.openFiles, file],
+      termTab: "terminal",
+      hlCount: 0,
+    }));
+  },
+  closeFile: (file) =>
+    set((s) => {
+      if (s.openFiles.length < 2) return s;
+      const openFiles = s.openFiles.filter((f) => f !== file);
+      return { openFiles, activeFile: s.activeFile === file ? openFiles[openFiles.length - 1] : s.activeFile };
+    }),
+  setTermTab: (termTab) => set({ termTab }),
+  setHlCount: (hlCount) => {
+    if (hlCount > 0) get().markDone("highlight");
+    if (hlCount !== get().hlCount) set({ hlCount });
+  },
+
+  runFile: () => {
+    runTimers.forEach(clearTimeout);
+    runTimers = [];
+    const id = get().activeFile;
+    const project = isProjectFile(id) ? projectById(id) : undefined;
+    if (!project) {
+      set({ termTab: "terminal", run: { lines: [{ text: ideCopy.notExecutable(id), kind: "err" }] } });
+      return;
+    }
+    get().markDone("run");
+    set({ termTab: "terminal", run: { lines: [] } });
+    const push = (text: string, kind: RunLine["kind"] | "bar") =>
+      set((s) => ({ run: { lines: [...s.run.lines, { text, kind }] } }));
+    project.run.forEach((text, i) =>
+      runTimers.push(
+        setTimeout(() => {
+          push(text, runKind(text));
+          get().beep(600 + i * 40, 0.02);
+        }, 280 * i),
+      ),
+    );
+    const bar = project.runBar;
+    if (bar) {
+      const t0 = 280 * project.run.length;
+      runTimers.push(setTimeout(() => push(bar.label, "bar"), t0));
+      runTimers.push(setTimeout(() => push(bar.after, "acc"), t0 + 3100));
+    }
+  },
+
+  // Step 4 replaces this with the scan → shrink → print transition.
+  summarize: () => {
+    get().markDone("summarize");
+    get().goResume();
+  },
 
   askTrash: () => {
     get().markDone("photo");

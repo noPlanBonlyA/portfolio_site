@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, type CSSProperties } from "react";
 
 import { themes } from "@/content/ide";
@@ -13,6 +14,9 @@ import { GlobalToast } from "./desktop/Extras";
 import { PhaseStub } from "./overlay/PhaseStub";
 import { TrashConfirm } from "./overlay/TrashConfirm";
 import styles from "./os.module.css";
+
+// Loaded right after unlock (while the visitor looks at the desktop), so it's ready to grow out of its icon.
+const Ide = dynamic(() => import("./ide/Ide"), { ssr: false });
 
 let consoleShown = false;
 
@@ -45,7 +49,8 @@ export default function DesktopOS() {
   return (
     <div className={styles.os} style={vars}>
       <Desktop hidden={boot !== "on" || phase !== "desktop"} dimmed={phase !== "desktop"} />
-      {boot === "on" && phase !== "desktop" && <PhaseStub />}
+      {boot === "on" && <Ide />}
+      {boot === "on" && phase === "resume" && <PhaseStub />}
       <TrashConfirm />
       <GlobalToast />
       {boot === "lock" && <LockScreen />}
