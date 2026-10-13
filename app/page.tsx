@@ -1,27 +1,34 @@
-import { About } from "@/components/About";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
-import { Contact } from "@/components/Contact";
-import { ExperienceTimeline } from "@/components/ExperienceTimeline";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { Navbar } from "@/components/Navbar";
-import { Projects } from "@/components/Projects";
-import { Skills } from "@/components/Skills";
+import Link from "next/link";
+
+import { DeviceSwitch } from "@/components/DeviceSwitch";
+import { profile } from "@/content/profile";
+import { resumeEn } from "@/content/resume";
 
 export default function Home() {
   return (
     <>
-      <AnimatedBackground />
-      <Navbar />
-      <main className="relative z-10">
-        <Hero />
-        <Skills />
-        <Projects />
-        <About />
-        <ExperienceTimeline />
-        <Contact />
-      </main>
-      <Footer />
+      <Link href="/cv" className="skip-link">
+        Skip to plain-text CV
+      </Link>
+
+      {/* Server-rendered summary for search engines and screen readers; the OS below is client-only. */}
+      <div className="sr-only">
+        <h1>
+          {profile.name} — {profile.role} ({profile.stackLine})
+        </h1>
+        <p>{resumeEn.summary}</p>
+        <p>
+          <Link href="/cv">Read the full CV</Link>
+        </p>
+      </div>
+
+      <noscript>
+        <p style={{ padding: 24 }}>
+          andrey.os needs JavaScript. <a href="/cv" style={{ color: "var(--accent)" }}>Read the CV as a page →</a>
+        </p>
+      </noscript>
+
+      <DeviceSwitch />
     </>
   );
 }

@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Andrey Dmitriev — Mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#0b0b0c}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+input{font:inherit}
+.m-scroll{overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.m-scroll::-webkit-scrollbar{display:none}
+.appin{animation:appin .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes appin{from{opacity:0;transform:scale(.86);border-radius:40px}to{opacity:1;transform:none}}
+.slideup{animation:slideup .6s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes slideup{to{transform:translateY(-100%);opacity:.5}}
+.rise{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.caret{display:inline-block;width:.6ch;height:1.1em;background:var(--accent);vertical-align:-.18em;animation:blink 1s steps(1) infinite}
+.shimmer{background:linear-gradient(90deg,#6f6e69 0%,#ecebe6 50%,#6f6e69 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 2.4s linear infinite}
+@keyframes shim{from{background-position:200% 0}to{background-position:-200% 0}}
+.bob{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.pulse{animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,255,61,0)}50%{box-shadow:0 0 0 9px rgba(200,255,61,.18)}}
+.tap{transition:transform .15s}
+.tap:active{transform:scale(.92)}
+.ln{display:flex;gap:12px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.75}
+.ln .no{flex:0 0 22px;text-align:right;color:#55544f;user-select:none}
+.ln .t{flex:1 1 auto;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.k{color:#ff8f70}.s{color:var(--accent)}.p{color:#8ec5ff}.c{color:#76756f}
+.scan{position:absolute;left:0;right:0;top:-140px;height:140px;z-index:5;pointer-events:none;background:linear-gradient(to bottom,transparent,rgba(200,255,61,.28) 70%,var(--accent) 100%);animation:scan .9s cubic-bezier(.6,0,.4,1) both}
+@keyframes scan{to{top:100%}}
+.paper{animation:printout 2.2s steps(22) .2s both}
+@keyframes printout{from{clip-path:inset(0 0 100% 0);transform:translateY(-24px)}to{clip-path:inset(0 0 0 0);transform:none}}
+.dots span{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:#8d8c86;animation:dot 1s infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,60%,100%{transform:none;opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+@media (prefers-reduced-motion: reduce){.appin,.slideup,.rise,.caret,.shimmer,.bob,.pulse,.scan,.paper,.dots span{animation:none !important}}
+</style>
+</helmet>
+
+<div style="--accent: {{accent}}; position: relative; width: 390px; height: 844px; overflow: hidden; background: #0b0b0c; color: #ecebe6; font-family: 'JetBrains Mono', ui-monospace, monospace">
+
+<!-- ================= HOME (always underneath) ================= -->
+<div style="position: absolute; inset: 0; background: #0b0b0c; background-image: radial-gradient(rgba(236,235,230,.08) 1px, transparent 1px); background-size: 22px 22px; padding: 56px 20px 28px; display: flex; flex-direction: column">
+<div aria-hidden="true" style="position: absolute; left: -8px; bottom: 96px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 104px; line-height: .8; letter-spacing: -.055em; color: #141416; white-space: nowrap; pointer-events: none">DMITRIEV</div>
+
+<!-- widget -->
+<div style="position: relative; display: flex; gap: 14px; align-items: center; padding: 14px; background: rgba(24,24,27,.75); border: 1px solid rgba(236,235,230,.12); border-radius: 22px; backdrop-filter: blur(12px)">
+<img src="/_blob/42bd7e591a4f2287d680c941124cb3d7" alt="Andrey Dmitriev" style="flex: 0 0 64px; width: 64px; height: 64px; border-radius: 16px; object-fit: cover; border: 1.5px solid var(--accent)">
+<div style="min-width: 0">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -.02em">Andrey Dmitriev</div>
+<div style="margin-top: 2px; font-size: 12px; color: #a3a29b">Full Stack Developer · SPb</div>
+<div style="margin-top: 6px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--accent)"><span style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent)"></span>open to strong product teams</div>
+</div>
+</div>
+
+<div style="position: relative; margin-top: 18px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 76px; line-height: .9; letter-spacing: -.05em">{{ clock }}</div>
+<div style="position: relative; margin-top: 4px; font-size: 12px; letter-spacing: .16em; color: #8d8c86; text-transform: uppercase">{{ dateStr }}</div>
+
+<!-- app grid -->
+<div style="position: relative; margin-top: 32px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 10px">
+<sc-for list="{{ apps }}" as="a" hint-placeholder-count="8">
+<button type="button" class="tap" onClick="{{ a.open }}" aria-label="{{ a.label }}" style="display: flex; flex-direction: column; align-items: center; gap: 7px">
+<span class="{{ a.cls }}" style="position: relative; width: 62px; height: 62px; border-radius: 18px; display: grid; place-items: center; background: {{ a.bg }}; color: {{ a.fg }}; font-weight: 700; font-size: 17px; border: 1px solid rgba(236,235,230,.12)">{{ a.glyph }}<sc-if value="{{ a.badge }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -6px; right: -6px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: #ff7a59; color: #0b0b0c; font-size: 11px; display: grid; place-items: center">1</span></sc-if></span>
+<span style="font-size: 11px; color: #d9d8d2; text-align: center; white-space: nowrap">{{ a.label }}</span>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ showHint }}" hint-placeholder-val="{{ true }}">
+<div class="bob" aria-hidden="true" style="position: relative; margin-top: 14px; margin-left: 4px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; align-self: flex-start">
+<span style="margin-left: 26px; font-size: 18px; color: var(--accent)">↑</span>
+<span style="padding: 6px 10px; background: var(--accent); color: #0b0b0c; border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: .08em">START HERE</span>
+</div>
+</sc-if>
+
+<!-- desktop hint -->
+<div style="position: relative; margin-top: auto; margin-bottom: 12px; display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: rgba(24,24,27,.8); border: 1px dashed rgba(200,255,61,.45); border-radius: 18px; backdrop-filter: blur(12px)">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" style="flex: 0 0 auto"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M8 20h8M12 16v4"></path></svg>
+<span style="min-width: 0"><span style="display: block; font-size: 12px; font-weight: 700; color: var(--accent)">There's more on desktop</span><span style="display: block; margin-top: 2px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 13.5px; line-height: 1.35; color: #d9d8d2">Open this site on a computer for the full andrey.os: windows, a live terminal, secrets and achievements.</span></span>
+</div>
+
+<!-- dock -->
+<div style="position: relative; display: flex; justify-content: space-around; padding: 12px 10px; background: rgba(24,24,27,.65); border: 1px solid rgba(236,235,230,.12); border-radius: 28px; backdrop-filter: blur(16px)">
+<sc-for list="{{ dockApps }}" as="a" hint-placeholder-count="4">
+<button type="button" class="tap" onClick="{{ a.open }}" aria-label="{{ a.label }}" style="width: 58px; height: 58px; border-radius: 17px; display: grid; place-items: center; background: {{ a.bg }}; color: {{ a.fg }}; font-weight: 700; font-size: 16px">{{ a.glyph }}</button>
+</sc-for>
+</div>
+</div>
+
+<!-- ================= APP: PORTFOLIO ================= -->
+<sc-if value="{{ isIde }}" hint-placeholder-val="{{ false }}">
+<div class="appin" style="position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column; background: #0b0b0c">
+<div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 52px 16px 12px; border-bottom: 1px solid rgba(236,235,230,.1); background: #0f0f11">
+<button type="button" onClick="{{ backFromIde }}" style="min-height: 40px; font-size: 13px; color: var(--accent)">{{ ideBack }}</button>
+<span style="font-size: 12px; color: #8d8c86; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ idePath }}</span>
+<button type="button" class="tap" onClick="{{ summarize }}" style="min-height: 34px; padding: 0 12px; background: var(--accent); color: #0b0b0c; border-radius: 8px; font-size: 11px; font-weight: 700; letter-spacing: .08em">→ CV</button>
+</div>
+
+<div class="m-scroll" style="flex: 1 1 auto; position: relative">
+<sc-if value="{{ isScan }}" hint-placeholder-val="{{ false }}"><div class="scan"></div><div style="position: absolute; left: 50%; top: 40%; z-index: 6; transform: translateX(-50%); padding: 12px 16px; background: #0b0b0c; border: 1px solid var(--accent); border-radius: 6px; font-size: 12px; letter-spacing: .1em; color: var(--accent); white-space: nowrap">SUMMARIZING → CV<span class="caret"></span></div></sc-if>
+
+<!-- explorer -->
+<sc-if value="{{ isExplorer }}" hint-placeholder-val="{{ true }}">
+<div style="padding: 18px 16px 8px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: .9; letter-spacing: -.045em; text-transform: uppercase">Full Stack<br><span style="color: var(--accent)">Developer</span></div>
+<p style="margin: 14px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; line-height: 1.4; color: #d9d8d2">In web development since 2022. API and database design, frontend, CI/CD and deployment.</p>
+<div style="margin-top: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(236,235,230,.12); border-bottom: 1px solid rgba(236,235,230,.12)">
+<div style="padding: 12px 0"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">200–300</div><div style="font-size: 9px; letter-spacing: .12em; color: #8d8c86; margin-top: 2px">DAILY USERS</div></div>
+<div style="padding: 12px 0"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">5+</div><div style="font-size: 9px; letter-spacing: .12em; color: #8d8c86; margin-top: 2px">SERVICES</div></div>
+<div style="padding: 12px 0"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">Team of 7</div><div style="font-size: 9px; letter-spacing: .12em; color: #8d8c86; margin-top: 2px">LED</div></div>
+</div>
+</div>
+<div style="padding: 8px 16px 4px; font-size: 11px; letter-spacing: .16em; color: #8d8c86">EXPLORER · TAP A FILE</div>
+<ul style="list-style: none; margin: 0; padding: 0 0 24px">
+<sc-for list="{{ files }}" as="f" hint-placeholder-count="10">
+<li>
+<sc-if value="{{ f.folder }}" hint-placeholder-val="{{ false }}"><div style="padding: 10px 16px 4px; font-size: 13px; color: #8d8c86">▾ {{ f.name }}</div></sc-if>
+<sc-if value="{{ f.file }}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{ f.open }}" style="width: 100%; display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px 0 {{ f.pad }}; border-bottom: 1px solid rgba(236,235,230,.06); font-size: 14px"><span style="flex: 0 0 22px; color: {{ f.ic }}; font-size: 12px">{{ f.icon }}</span><span style="flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ f.name }}</span><span style="color: #55544f">›</span></button>
+</sc-if>
+</li>
+</sc-for>
+</ul>
+</sc-if>
+
+<!-- file view -->
+<sc-if value="{{ isFile }}" hint-placeholder-val="{{ false }}">
+<div class="rise" style="padding: 16px 14px 32px">
+
+<sc-if value="{{ v.proj }}" hint-placeholder-val="{{ false }}">
+<div>
+<div class="ln"><span class="no">1</span><span class="t c">---</span></div>
+<sc-for list="{{ proj.meta }}" as="m" hint-placeholder-count="4"><div class="ln"><span class="no">·</span><span class="t"><span class="p">{{ m.k }}</span>: <span class="s">{{ m.v }}</span></span></div></sc-for>
+<div class="ln"><span class="no">·</span><span class="t c">---</span></div>
+<div style="margin: 18px 0 4px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 64px; line-height: .95; letter-spacing: -.045em; color: var(--accent)">{{ proj.big }}</div>
+<div style="font-size: 11px; letter-spacing: .12em; color: #a3a29b; text-transform: uppercase">{{ proj.bigLabel }}</div>
+<ul style="list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid rgba(236,235,230,.1)">
+<sc-for list="{{ proj.facts }}" as="f" hint-placeholder-count="4"><li style="display: flex; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(236,235,230,.1); font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; line-height: 1.4"><span style="font-family: 'JetBrains Mono', monospace; color: var(--accent)">›</span><span>{{ f.t }}</span></li></sc-for>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px"><sc-for list="{{ proj.tags }}" as="tg" hint-placeholder-count="5"><span style="font-size: 11px; padding: 6px 10px; border: 1px solid rgba(236,235,230,.2); border-radius: 2px">{{ tg.t }}</span></sc-for></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.exp }}" hint-placeholder-val="{{ false }}">
+<div>
+<div class="ln"><span class="no">1</span><span class="t c"># git log --career</span></div>
+<sc-for list="{{ jobs }}" as="j" hint-placeholder-count="6">
+<div style="padding: 14px 0; border-bottom: 1px solid rgba(236,235,230,.1)">
+<div style="font-size: 11px; color: var(--accent)">* {{ j.period }}</div>
+<div style="margin-top: 4px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 19px; line-height: 1.15">{{ j.company }}</div>
+<div style="margin-top: 2px; font-size: 12px; color: #8ec5ff">{{ j.role }}</div>
+<div style="margin-top: 6px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; line-height: 1.45; color: #b9b8b1">{{ j.lead }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.stack }}" hint-placeholder-val="{{ false }}">
+<div>
+<div class="ln"><span class="no">1</span><span class="t"><span class="k">export const</span> stack = {</span></div>
+<sc-for list="{{ skills }}" as="s" hint-placeholder-count="6"><div class="ln"><span class="no">·</span><span class="t">  <span class="p">{{ s.key }}</span>: <span class="s">{{ s.arr }}</span>,</span></div></sc-for>
+<div class="ln"><span class="no">·</span><span class="t">};<span class="caret"></span></span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.about }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.05; letter-spacing: -.035em">Comfortable running several projects in parallel.</div>
+<ul style="list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid rgba(236,235,230,.1); font-size: 13px; line-height: 1.5">
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(236,235,230,.1)"><span class="p">education</span> — B.Sc., ITMO University, 2026 · GPA 4.1</li>
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(236,235,230,.1)"><span class="p">now</span> — studying a program in AI management</li>
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(236,235,230,.1)"><span class="p">olympiads</span> — winner, Data Analytics · finalist, Algorithms and Data Structures</li>
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(236,235,230,.1)"><span class="p">languages</span> — Russian (native) · English (B2)</li>
+</ul>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.contact }}" hint-placeholder-val="{{ false }}">
+<div>
+<div class="ln"><span class="no">1</span><span class="t c">#!/bin/sh — let's build something</span></div>
+<div style="margin: 18px 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 56px; line-height: .95; letter-spacing: -.05em; text-transform: uppercase">Let's<br><span style="color: var(--accent)">build.</span></div>
+<div style="display: grid; gap: 10px">
+<a href="https://t.me/noPlanBonlyA" class="tap" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px; background: var(--accent); color: #0b0b0c; border-radius: 12px; font-weight: 700; font-size: 14px"><span>Telegram @noPlanBonlyA</span><span>↗</span></a>
+<a href="mailto:andrey.spb521@gmail.com" class="tap" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px; border: 1px solid rgba(236,235,230,.2); border-radius: 12px; font-size: 13px"><span>andrey.spb521@gmail.com</span><span>↗</span></a>
+<a href="https://github.com/noPlanBonlyA" class="tap" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px; border: 1px solid rgba(236,235,230,.2); border-radius: 12px; font-size: 13px"><span>github.com/noPlanBonlyA</span><span>↗</span></a>
+</div>
+</div>
+</sc-if>
+
+</div>
+</sc-if>
+</div>
+
+<div style="flex: 0 0 auto; padding: 10px 16px 26px; background: #0f0f11; border-top: 1px solid rgba(236,235,230,.1); font-size: 12px"><span style="color: var(--accent)">{{ term }}</span><span class="caret"></span></div>
+</div>
+</sc-if>
+
+<!-- ================= APP: RESUME ================= -->
+<sc-if value="{{ isResume }}" hint-placeholder-val="{{ false }}">
+<div class="appin" style="position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; background: #0b0b0c">
+<div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 52px 16px 12px; background: #0f0f11; border-bottom: 1px solid rgba(236,235,230,.1)">
+<button type="button" onClick="{{ goHome }}" style="min-height: 40px; font-size: 13px; color: var(--accent)">‹ Home</button>
+<span style="font-size: 12px; color: #8d8c86">resume.pdf</span>
+<span style="width: 52px"></span>
+</div>
+<div class="m-scroll" style="flex: 1 1 auto; padding: 14px 12px 110px">
+<article class="paper" style="background: #f7f6f1; color: #141413; padding: 24px 20px; border-radius: 4px; font-family: 'Bricolage Grotesque', sans-serif">
+<h1 style="margin: 0; font-weight: 800; font-size: 34px; line-height: .95; letter-spacing: -.04em">Andrey Dmitriev</h1>
+<div style="margin-top: 6px; font-size: 15px; font-weight: 600">Full Stack Developer <span style="color: #5c5b55; font-weight: 400">(React / Node.js / NestJS)</span></div>
+<div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #3d3c38"><span>Saint Petersburg</span><span>andrey.spb521@gmail.com</span><span>+7 (981) 988-98-89</span><span>TG @noPlanBonlyA</span></div>
+<div style="height: 2px; background: #141413; margin: 16px 0"></div>
+<h2 style="margin: 0 0 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .2em; color: #5c5b55">SUMMARY</h2>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.5">Full Stack Developer working in web development since 2022. Currently responsible for development and support of 5+ internal services (NestJS, React) used daily by 200-300 enterprise users; previously led a team of 7 on an educational platform.</p>
+<h2 style="margin: 20px 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .2em; color: #5c5b55">EXPERIENCE</h2>
+<sc-for list="{{ jobs }}" as="j" hint-placeholder-count="6">
+<div style="padding: 10px 0; border-bottom: 1px solid rgba(20,20,19,.12)">
+<div style="font-weight: 800; font-size: 14.5px; line-height: 1.25">{{ j.role }}</div>
+<div style="font-size: 13px; color: #3d3c38">{{ j.company }}</div>
+<div style="margin-top: 2px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #5c5b55">{{ j.period }}</div>
+<div style="margin-top: 5px; font-size: 13px; line-height: 1.45; color: #262624">{{ j.lead }}</div>
+</div>
+</sc-for>
+<h2 style="margin: 20px 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .2em; color: #5c5b55">SKILLS</h2>
+<sc-for list="{{ skills }}" as="s" hint-placeholder-count="6"><div style="padding: 7px 0; border-bottom: 1px solid rgba(20,20,19,.1); font-size: 13px; line-height: 1.4"><b>{{ s.label }}</b> — {{ s.value }}</div></sc-for>
+<h2 style="margin: 20px 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .2em; color: #5c5b55">EDUCATION &amp; LANGUAGES</h2>
+<div style="font-size: 13px; line-height: 1.6">B.Sc., ITMO University, 2026<br>Russian (native), English (B2)</div>
+</article>
+</div>
+<div style="position: absolute; left: 12px; right: 12px; bottom: 24px; display: flex; gap: 8px">
+<button type="button" class="tap" onClick="{{ download }}" style="flex: 1 1 auto; min-height: 54px; border-radius: 14px; background: var(--accent); color: #0b0b0c; font-weight: 700; font-size: 14px; letter-spacing: .06em; text-align: center; box-shadow: 0 16px 40px rgba(0,0,0,.5)">DOWNLOAD PDF ↓</button>
+<button type="button" class="tap" onClick="{{ openIdeHome }}" aria-label="Open portfolio" style="flex: 0 0 54px; min-height: 54px; border-radius: 14px; background: #1b1b1e; border: 1px solid rgba(236,235,230,.16); font-weight: 700; text-align: center">&lt;/&gt;</button>
+</div>
+</div>
+</sc-if>
+
+<!-- ================= APP: TERMINAL ================= -->
+<sc-if value="{{ isTerm }}" hint-placeholder-val="{{ false }}">
+<div class="appin" style="position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; background: #0e0e10">
+<div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 52px 16px 12px; background: #0f0f11; border-bottom: 1px solid rgba(236,235,230,.1)">
+<button type="button" onClick="{{ goHome }}" style="min-height: 40px; font-size: 13px; color: var(--accent)">‹ Home</button>
+<span style="font-size: 12px; color: #8d8c86">zsh — andrey@os</span>
+<span style="width: 52px"></span>
+</div>
+<div ref="{{ setTermOut }}" class="m-scroll" style="flex: 1 1 auto; padding: 14px 16px; font-size: 12.5px; line-height: 1.6">
+<sc-for list="{{ termLines }}" as="l" hint-placeholder-count="3"><div style="white-space: pre-wrap; color: {{ l.color }}">{{ l.t }}</div></sc-for>
+<div><span style="color: var(--accent)">andrey@os:~$</span> <span class="caret"></span></div>
+</div>
+<div style="flex: 0 0 auto; padding: 12px 12px 28px; background: #0f0f11; border-top: 1px solid rgba(236,235,230,.1)">
+<div style="font-size: 10px; letter-spacing: .16em; color: #6f6e69; margin-bottom: 8px">TAP A COMMAND</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ cmds }}" as="c" hint-placeholder-count="6"><button type="button" class="tap" onClick="{{ c.run }}" style="min-height: 38px; padding: 0 12px; border-radius: 10px; border: 1px solid rgba(236,235,230,.18); font-size: 12px; color: {{ c.fg }}">{{ c.t }}</button></sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ================= APP: MESSAGES ================= -->
+<sc-if value="{{ isMsg }}" hint-placeholder-val="{{ false }}">
+<div class="appin" style="position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; background: #0e0e10">
+<div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 52px 16px 12px; background: #0f0f11; border-bottom: 1px solid rgba(236,235,230,.1)">
+<button type="button" onClick="{{ goHome }}" style="min-height: 40px; font-size: 13px; color: var(--accent)">‹ Home</button>
+<span style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 13px; font-weight: 700">Andrey.bot</span><span style="font-size: 10px; color: #6f6e69">scripted answers from my CV</span></span>
+<span style="width: 52px"></span>
+</div>
+<div ref="{{ setMsgOut }}" class="m-scroll" style="flex: 1 1 auto; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ msgs }}" as="m" hint-placeholder-count="2"><div style="align-self: {{ m.align }}; max-width: 84%; padding: 10px 13px; border-radius: 18px; background: {{ m.bg }}; color: {{ m.fg }}; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; line-height: 1.35; white-space: pre-line">{{ m.t }}</div></sc-for>
+<sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}"><div class="dots" style="align-self: flex-start; padding: 13px 14px; border-radius: 18px; background: #202024"><span></span><span></span><span></span></div></sc-if>
+</div>
+<div style="flex: 0 0 auto; padding: 10px 12px 28px; background: #0f0f11; border-top: 1px solid rgba(236,235,230,.1)">
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px"><sc-for list="{{ chips }}" as="c" hint-placeholder-count="4"><button type="button" class="tap" onClick="{{ c.ask }}" style="min-height: 34px; padding: 0 11px; border-radius: 17px; border: 1px solid rgba(236,235,230,.2); font-size: 11.5px">{{ c.t }}</button></sc-for></div>
+<div style="display: flex; gap: 8px">
+<label for="m-msg" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message Andrey.bot</label>
+<input id="m-msg" value="{{ msgInput }}" onChange="{{ msgChange }}" onKeyDown="{{ msgKey }}" placeholder="Message" autoComplete="off" style="flex: 1; min-width: 0; min-height: 44px; padding: 0 14px; background: #1b1b1e; border: 1px solid rgba(236,235,230,.14); border-radius: 22px; color: #ecebe6; outline: none; font-size: 15px">
+<button type="button" onClick="{{ msgSend }}" aria-label="Send" style="flex: 0 0 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #0b0b0c; font-weight: 700; text-align: center">↑</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ================= LOCK ================= -->
+<sc-if value="{{ isLock }}" hint-placeholder-val="{{ true }}">
+<button type="button" class="{{ lockCls }}" onClick="{{ unlock }}" onTouchStart="{{ touchStart }}" onTouchEnd="{{ touchEnd }}" aria-label="Unlock — swipe up or tap" style="position: absolute; inset: 0; z-index: 50; width: 100%; display: flex; flex-direction: column; align-items: center; padding: 120px 24px 40px; text-align: center; background: #0b0b0c; background-image: radial-gradient(rgba(236,235,230,.08) 1px, transparent 1px); background-size: 22px 22px; overflow: hidden">
+<span aria-hidden="true" style="position: absolute; left: -8px; bottom: 120px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 104px; line-height: .8; letter-spacing: -.055em; color: #141416; white-space: nowrap">DMITRIEV</span>
+<span style="position: relative; font-size: 12px; letter-spacing: .2em; color: #b9b8b1; text-transform: uppercase">{{ dateStr }}</span>
+<span style="position: relative; margin-top: 6px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 104px; line-height: .9; letter-spacing: -.05em">{{ clock }}</span>
+<span style="position: relative; margin-top: 30px; display: flex; gap: 12px; align-items: center; padding: 12px 14px; width: 100%; background: rgba(24,24,27,.8); border: 1px solid rgba(236,235,230,.12); border-radius: 18px; text-align: left">
+<span style="flex: 0 0 36px; height: 36px; border-radius: 10px; background: var(--accent); color: #0b0b0c; display: grid; place-items: center; font-weight: 700; font-size: 12px">&lt;/&gt;</span>
+<span style="min-width: 0"><span style="display: block; font-size: 12px; font-weight: 700">portfolio.ide · now</span><span style="display: block; margin-top: 2px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; color: #d9d8d2">Everything I've built lives in here.</span></span>
+</span>
+<span style="position: relative; margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 12px">
+<img src="/_blob/42bd7e591a4f2287d680c941124cb3d7" alt="" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent)">
+<span class="shimmer" style="font-size: 12px; letter-spacing: .16em">SWIPE UP OR TAP TO UNLOCK</span>
+<span aria-hidden="true" style="width: 134px; height: 5px; border-radius: 3px; background: #ecebe6; opacity: .8"></span>
+</span>
+</button>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#c8ff3d","options":["#c8ff3d","#7cf0c8","#ffb347","#ff7a59"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  state = {
+    screen: 'lock', lockOut: false, file: null, scanning: false, hintDone: false, clock: '', dateStr: '',
+    termLines: [{ t: 'andrey.os mobile terminal — tap a command below', c: 'dim' }],
+    msgs: [{ t: "Hi! I'm Andrey.bot. Ask me about Andrey's stack, projects or availability.", me: false }],
+    typing: false, msgInput: '', term: '$ ls portfolio/',
+  };
+  _to = [];
+  setTermOut = (el) => { this.termOut = el; };
+  setMsgOut = (el) => { this.msgOut = el; };
+
+  componentDidMount() {
+    const tick = () => {
+      const d = new Date();
+      const p = (n) => String(n).padStart(2, '0');
+      this.setState({ clock: p(d.getHours()) + ':' + p(d.getMinutes()), dateStr: d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }) });
+    };
+    tick();
+    this.clockT = setInterval(tick, 20000);
+  }
+  componentDidUpdate(pp, ps) {
+    if (this.state.termLines !== ps.termLines && this.termOut) this.termOut.scrollTop = this.termOut.scrollHeight;
+    if ((this.state.msgs !== ps.msgs || this.state.typing !== ps.typing) && this.msgOut) this.msgOut.scrollTop = this.msgOut.scrollHeight;
+  }
+  componentWillUnmount() { clearInterval(this.clockT); this._to.forEach((x) => clearTimeout(x)); }
+  later(fn, ms) { this._to.push(setTimeout(fn, ms)); }
+
+  unlock() {
+    if (this.state.screen !== 'lock' || this.state.lockOut) return;
+    this.setState({ lockOut: true });
+    this.later(() => this.setState({ screen: 'home', lockOut: false }), 600);
+  }
+  open(screen) { this.setState({ screen, hintDone: this.state.hintDone || screen === 'ide' }); }
+  openFile(f) { this.setState({ file: f.id, term: '$ code ' + f.path }); }
+  summarize() {
+    this.setState({ scanning: true, file: null, term: '$ summarize --format=cv' });
+    this.later(() => this.setState({ scanning: false, screen: 'resume' }), 1100);
+  }
+
+  files() {
+    return [
+      { id: 'readme', name: 'README.md', path: 'README.md', icon: 'M↓', pad: 16 },
+      { folder: true, name: 'work/' },
+      { id: 'p0', name: 'enterprise-systems.md', path: 'work/enterprise-systems.md', icon: 'M↓', pad: 32 },
+      { id: 'p1', name: 'chatbot-and-workflows.md', path: 'work/chatbot-and-workflows.md', icon: 'M↓', pad: 32 },
+      { id: 'p2', name: 'senat-ai-platform.md', path: 'work/senat-ai-platform.md', icon: 'M↓', pad: 32 },
+      { id: 'p3', name: 'ai-character-bot.md', path: 'work/ai-character-bot.md', icon: 'M↓', pad: 32 },
+      { id: 'p4', name: 'bitrix-speedup.md', path: 'work/bitrix-speedup.md', icon: 'M↓', pad: 32 },
+      { id: 'exp', name: 'experience.log', path: 'experience.log', icon: '≡', pad: 16 },
+      { id: 'stack', name: 'stack.ts', path: 'stack.ts', icon: 'TS', pad: 16 },
+      { id: 'about', name: 'about.md', path: 'about.md', icon: 'M↓', pad: 16 },
+      { id: 'contact', name: 'contact.sh', path: 'contact.sh', icon: '$_', pad: 16 },
+    ];
+  }
+
+  runCmd(c) {
+    const out = [];
+    const push = (t, k) => out.push({ t, c: k || 'out' });
+    push('andrey@os:~$ ' + c, 'cmd');
+    if (c === 'whoami') push('andrey dmitriev — full stack developer (React / Node.js / NestJS)');
+    else if (c === 'projects') ['enterprise-systems', 'chatbot-and-workflows', 'senat-ai-platform', 'ai-character-bot', 'bitrix-speedup'].forEach((x) => push('  work/' + x + '.md'));
+    else if (c === 'neofetch') ['   ___   ___    andrey@andrey.os', '  / _ | / _ \\   OS: andrey.os v2026.10', ' / __ |/ // /   Role: Full Stack Developer', '/_/ |_/____/    Uptime: since 2022'].forEach((x) => push(x, 'acc'));
+    else if (c === 'skills') push('React · Next.js · Vue · TypeScript · Node.js · NestJS · FastAPI · PostgreSQL · Redis · Docker');
+    else if (c === 'hire andrey') {
+      this.setState((s) => ({ termLines: [...s.termLines, ...out] }));
+      ['> compiling offer…', '[1/3] stack ............ ✓', '[2/3] delivery ......... ✓', '[3/3] availability ..... ✓', 'opening contact.sh…'].forEach((t, i) => this.later(() => this.setState((s) => ({ termLines: [...s.termLines, { t, c: 'acc' }] })), 350 * (i + 1)));
+      this.later(() => { this.setState({ screen: 'ide', file: 'contact', term: '$ code contact.sh' }); }, 2300);
+      return;
+    }
+    else if (c === 'sudo make coffee') { push('[sudo] password for recruiter: ********'); push('coffee ready. secret found ★', 'acc'); }
+    else if (c === 'clear') { this.setState({ termLines: [] }); return; }
+    this.setState((s) => ({ termLines: [...s.termLines, ...out] }));
+  }
+
+  botAnswer(q) {
+    const t = q.toLowerCase();
+    const has = (...w) => w.some((x) => t.indexOf(x) > -1);
+    if (has('stack', 'skill', 'tech')) return 'Frontend: React, Next.js, Vue, TypeScript.\nBackend: Node.js, NestJS, Python/FastAPI.\nAlso PostgreSQL, Redis, Docker, GitHub Actions.';
+    if (has('open', 'availab', 'hire', 'job', 'work')) return 'Yes — open to strong product teams. Fastest way: Telegram @noPlanBonlyA.';
+    if (has('senat', 'lead', 'team')) return 'At SENAT AI I led 7 developers through a 6-month project and delivered an educational platform.';
+    if (has('contact', 'email', 'telegram')) return 'Email: andrey.spb521@gmail.com\nTelegram: @noPlanBonlyA\nGitHub: github.com/noPlanBonlyA';
+    return 'Good question — I would rather answer it myself. Ping me on Telegram @noPlanBonlyA.';
+  }
+  sendMsg(text) {
+    const q = (text || '').trim();
+    if (!q || this.state.typing) return;
+    this.setState((s) => ({ msgs: [...s.msgs, { t: q, me: true }], msgInput: '', typing: true }));
+    this.later(() => this.setState((s) => ({ typing: false, msgs: [...s.msgs, { t: this.botAnswer(q), me: false }] })), 900);
+  }
+
+  renderVals() {
+    const S = this.state;
+    const A = this.props.accent ?? '#c8ff3d';
+    const appDefs = [
+      { id: 'ide', label: 'Portfolio', glyph: '</>', bg: A, fg: '#0b0b0c', badge: !S.hintDone, cls: S.hintDone ? '' : 'pulse' },
+      { id: 'resume', label: 'Resume', glyph: 'CV', bg: '#ecebe6', fg: '#0b0b0c' },
+      { id: 'term', label: 'Terminal', glyph: '>_', bg: '#0e0e10', fg: A },
+      { id: 'msg', label: 'Messages', glyph: '…', bg: '#8ec5ff', fg: '#0b0b0c' },
+      { href: 'https://github.com/noPlanBonlyA', label: 'GitHub', glyph: 'GH', bg: '#2a2a2e', fg: '#ecebe6' },
+      { href: 'https://t.me/noPlanBonlyA', label: 'Telegram', glyph: 'TG', bg: '#1b1b1e', fg: '#8ec5ff' },
+      { href: 'https://open.spotify.com/playlist/6qVzdI8XKIji2hjQ5FDy7Y', label: 'Music', glyph: '♪', bg: '#ff7a59', fg: '#0b0b0c' },
+      { id: 'ide-contact', label: 'Contact', glyph: '$_', bg: '#1d2416', fg: A },
+    ];
+    const go = (x) => () => {
+      if (x.href) { try { window.open(x.href, '_blank'); } catch (e) {} return; }
+      if (x.id === 'ide-contact') { this.setState({ screen: 'ide', file: 'contact', hintDone: true, term: '$ code contact.sh' }); return; }
+      this.open(x.id);
+    };
+    const apps = appDefs.map((x) => ({ label: x.label, glyph: x.glyph, bg: x.bg, fg: x.fg, badge: !!x.badge, cls: x.cls || '', open: go(x) }));
+    const dockApps = [appDefs[0], appDefs[1], appDefs[2], appDefs[3]].map((x) => ({ label: x.label, glyph: x.glyph, bg: x.bg, fg: x.fg, open: go(x) }));
+
+    const files = this.files().map((f) => f.folder ? { folder: true, file: false, name: f.name } : {
+      folder: false, file: true, name: f.name, icon: f.icon, pad: f.pad + 'px',
+      ic: f.icon === '$_' ? A : f.icon === '≡' ? '#ffb347' : '#8ec5ff',
+      open: () => f.id === 'readme' ? this.setState({ file: null, term: '$ cat README.md' }) : this.openFile(f),
+    });
+    const fileObj = this.files().find((f) => f.id === S.file);
+
+    const defs = {
+      p0: { meta: [['title', 'Enterprise Internal Systems'], ['org', 'Research Institute Gazekonomika'], ['period', 'Sep 2025 → now']], big: '200–300', bigLabel: 'employees use these services daily', facts: ['5+ internal services (React, NestJS) I develop and support', 'REST APIs, data models and business logic', 'Authentication and RBAC', 'Microfrontends in a unified enterprise platform'], tags: ['NestJS', 'React', 'TypeScript', 'RBAC', 'Microfrontends'] },
+      p1: { meta: [['title', 'Corporate Chatbot and Workflow Tools'], ['org', 'Research Institute Gazekonomika'], ['period', 'Sep 2025 → now']], big: 'AI', bigLabel: 'seminars across company centers', facts: ['A corporate chatbot for employees', 'Workflow-optimization tools', 'Seminars on AI for analysis, implementation, testing and docs'], tags: ['AI', 'NestJS', 'React'] },
+      p2: { meta: [['title', 'SENAT AI Educational Platform'], ['role', 'Team Lead / Full Stack'], ['period', 'Feb 2025 → Jan 2026']], big: '7 devs', bigLabel: 'led through a 6-month project, delivered', facts: ['Client requirements → technical specs and tasks', 'Python/FastAPI and Node.js services with tests', 'React / Vue / TypeScript UIs and admin panels', 'CI/CD, deployment and code reviews'], tags: ['React', 'Vue', 'Python', 'FastAPI', 'CI/CD'] },
+      p3: { meta: [['title', 'AI Character Bot'], ['org', 'ITMO University Startup Project'], ['period', 'Nov 2024 → May 2025']], big: '2nd', bigLabel: 'place in a startup competition', facts: ['Telegram AI service for 3D character customization via natural language', 'LLM logic through FastAPI', 'Bot and backend on REST + WebSocket', 'Docker Compose + GitHub Actions CI/CD'], tags: ['FastAPI', 'LLM', 'Telegram', 'WebSocket'] },
+      p4: { meta: [['title', 'Bitrix Performance Overhaul'], ['org', 'Leadmakers'], ['period', 'May 2024 → Oct 2024']], big: '~1 s', bigLabel: 'page load, down from 10–20 s', facts: ['Optimized SQL queries and server-side caching', 'Contributed to Google PageSpeed 40 → 97', 'Custom PHP / 1C-Bitrix and AJAX/jQuery features'], tags: ['1C-Bitrix', 'PHP', 'SQL', 'Caching'] },
+    };
+    const d = defs[S.file] || defs.p0;
+    const proj = { meta: d.meta.map(([k, v]) => ({ k, v })), big: d.big, bigLabel: d.bigLabel, facts: d.facts.map((t) => ({ t })), tags: d.tags.map((t) => ({ t })) };
+
+    const jobs = [
+      ['Full Stack Developer (Middle+)', 'Research Institute Gazekonomika', 'Sep 2025 – Present', '5+ internal services (React, NestJS) used daily by 200-300 employees; RBAC, microfrontends, AI seminars.'],
+      ['Project Manager', 'Petersburg Pharmacies', 'Sep 2025 – Apr 2026', 'Coordinated website improvements: requirements, task specs, deadlines.'],
+      ['Team Lead / Full Stack Developer', 'SENAT AI', 'Feb 2025 – Jan 2026', 'Led 7 developers through a 6-month project, delivered an educational platform.'],
+      ['Full Stack Developer / DevOps', 'ITMO University Startup Project', 'Nov 2024 – May 2025', 'Telegram AI service MVP; 2nd place in a startup competition.'],
+      ['1C-Bitrix / Full Stack Developer', 'Leadmakers', 'May 2024 – Oct 2024', 'SQL optimization and caching: page load from 10-20 s to ~1 s.'],
+      ['Full Stack Developer / Technical Administrator', 'Driving School of Unified Standard', 'Nov 2022 – Dec 2024', 'Built and launched the company site on WordPress.'],
+    ].map(([role, company, period, lead]) => ({ role, company, period, lead }));
+
+    const skills = [
+      ['frontend', 'Frontend', ['React', 'Next.js', 'Vue', 'TypeScript', 'FSD']],
+      ['backend', 'Backend', ['Node.js', 'NestJS', 'Python', 'FastAPI', 'WebSocket']],
+      ['databases', 'Databases', ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis']],
+      ['devops', 'DevOps & tools', ['Docker', 'GitHub Actions', 'Nginx', 'Linux']],
+    ].map(([key, label, arr]) => ({ key, label, value: arr.join(', '), arr: '[' + arr.map((a) => '"' + a + '"').join(', ') + ']' }));
+
+    const colors = { cmd: '#ecebe6', out: '#b9b8b1', acc: A, dim: '#76756f' };
+    const termLines = S.termLines.map((l) => ({ t: l.t, color: colors[l.c] || colors.out }));
+    const cmds = ['whoami', 'projects', 'skills', 'neofetch', 'hire andrey', 'sudo make coffee', 'clear'].map((t) => ({ t, fg: t === 'hire andrey' ? A : '#ecebe6', run: () => this.runCmd(t) }));
+
+    const msgs = S.msgs.map((m) => ({ t: m.t, align: m.me ? 'flex-end' : 'flex-start', bg: m.me ? A : '#202024', fg: m.me ? '#0b0b0c' : '#ecebe6' }));
+    const chips = ['Your stack?', 'Open to work?', 'About SENAT AI', 'Contacts'].map((q) => ({ t: q, ask: () => this.sendMsg(q) }));
+
+    const inFile = S.screen === 'ide' && !!S.file;
+    return {
+      accent: A, clock: S.clock, dateStr: S.dateStr,
+      isLock: S.screen === 'lock', lockCls: S.lockOut ? 'slideup' : '',
+      unlock: () => this.unlock(),
+      touchStart: (e) => { this.ty = e.touches && e.touches[0] ? e.touches[0].clientY : 0; },
+      touchEnd: (e) => { const y = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : 0; if (this.ty - y > 40) this.unlock(); },
+      apps, dockApps, showHint: !S.hintDone,
+      isIde: S.screen === 'ide', isResume: S.screen === 'resume', isTerm: S.screen === 'term', isMsg: S.screen === 'msg',
+      isExplorer: !S.file, isFile: !!S.file, isScan: S.scanning,
+      ideBack: inFile ? '‹ Files' : '‹ Home',
+      backFromIde: () => inFile ? this.setState({ file: null, term: '$ ls portfolio/' }) : this.setState({ screen: 'home' }),
+      idePath: fileObj ? fileObj.path : 'portfolio.ide',
+      files, proj, jobs, skills,
+      v: { proj: !!S.file && S.file.charAt(0) === 'p', exp: S.file === 'exp', stack: S.file === 'stack', about: S.file === 'about', contact: S.file === 'contact' },
+      term: S.term,
+      summarize: () => this.summarize(),
+      goHome: () => this.setState({ screen: 'home' }),
+      openIdeHome: () => this.setState({ screen: 'ide', file: null }),
+      download: () => { try { window.print(); } catch (e) {} },
+      setTermOut: this.setTermOut, setMsgOut: this.setMsgOut,
+      termLines, cmds,
+      msgs, chips, typing: S.typing, msgInput: S.msgInput,
+      msgChange: (e) => this.setState({ msgInput: e.target.value }),
+      msgKey: (e) => { if (e.key === 'Enter') { e.preventDefault(); this.sendMsg(S.msgInput); } },
+      msgSend: () => this.sendMsg(S.msgInput),
+    };
+  }
+}
+</script>
+</body>
+</html>

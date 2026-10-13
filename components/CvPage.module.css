@@ -1,0 +1,71 @@
+.page {
+  min-height: 100dvh;
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  padding: 12px clamp(16px, 3vw, 32px);
+  background: rgba(11, 11, 12, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.btn,
+.lang a,
+.download {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+}
+
+.btn {
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+}
+
+.lang {
+  display: flex;
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.on {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.download {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.main {
+  padding: clamp(16px, 3vw, 32px) clamp(0px, 2vw, 20px) 80px;
+}
+
+@media print {
+  .bar {
+    display: none;
+  }
+
+  .page {
+    background: #fff;
+  }
+
+  .main {
+    padding: 0;
+  }
+}

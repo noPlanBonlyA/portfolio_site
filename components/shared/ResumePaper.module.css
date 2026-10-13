@@ -1,0 +1,171 @@
+.paper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 64px);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+}
+
+.paper ::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.paper a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.paper :focus-visible {
+  outline-color: var(--ink);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.name {
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.titleStack {
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.mark {
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  border: 2px solid var(--ink);
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.section {
+  margin-top: 34px;
+}
+
+.h2 {
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
+}
+
+.summary {
+  font-size: 16px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.job {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(20, 20, 19, 0.14);
+}
+
+.job:first-of-type {
+  padding-top: 8px;
+}
+
+.jobHead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 20px;
+}
+
+.role {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.company {
+  font-weight: 400;
+  color: var(--ink-2);
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.bullets {
+  margin-top: 8px;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #262624;
+}
+
+.bullets li + li {
+  margin-top: 3px;
+}
+
+.rows {
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(20, 20, 19, 0.1);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.row dt {
+  flex: 0 0 170px;
+  font-weight: 800;
+}
+
+.row dd {
+  flex: 1 1 300px;
+  margin: 0;
+  color: #262624;
+}
+
+@media print {
+  .paper {
+    box-shadow: none;
+    max-width: none;
+  }
+}
