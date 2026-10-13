@@ -139,7 +139,7 @@
 }
 
 .k_dim {
-  color: #76756f;
+  color: var(--dim);
 }
 
 .prompt {

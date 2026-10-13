@@ -52,7 +52,7 @@
 }
 
 .c {
-  color: #76756f;
+  color: var(--dim);
 }
 
 .small {
@@ -648,7 +648,7 @@
 }
 
 .chev {
-  color: #55544f;
+  color: var(--dim);
 }
 
 .file {
@@ -904,7 +904,7 @@
 }
 
 .t_dim {
-  color: #76756f;
+  color: var(--dim);
 }
 
 .appFoot .eyebrow {

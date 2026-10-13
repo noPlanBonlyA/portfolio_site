@@ -20,6 +20,7 @@ import styles from "./mobile.module.css";
 /** Full-screen app frame: header with back / title / action, scrolling body, optional footer. */
 function Shell({
   title,
+  label,
   back,
   onBack,
   action,
@@ -29,6 +30,8 @@ function Shell({
   className = "",
 }: {
   title: ReactNode;
+  /** Accessible name of the screen; defaults to the title when it's plain text. */
+  label?: string;
   back: string;
   onBack: () => void;
   action?: ReactNode;
@@ -38,7 +41,7 @@ function Shell({
   className?: string;
 }) {
   return (
-    <section className={`${styles.appScreen} ${className}`} aria-label={typeof title === "string" ? title : undefined}>
+    <section className={`${styles.appScreen} ${className}`} aria-label={label ?? (typeof title === "string" ? title : undefined)}>
       <header className={styles.appBar}>
         <button type="button" className={styles.back} onClick={onBack}>
           {back}
@@ -388,6 +391,7 @@ function Messages({ nav }: { nav: Nav }) {
           <span className={styles.botSub}>{botCopy.footnote}</span>
         </span>
       }
+      label="Messages — Andrey.bot"
       back="‹ Home"
       onBack={nav.home}
       className={styles.msgScreen}

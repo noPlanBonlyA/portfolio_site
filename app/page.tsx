@@ -7,17 +7,19 @@ import { resumeEn } from "@/content/resume";
 export default function Home() {
   return (
     <>
-      <Link href="/cv" className="skip-link">
-        Skip to plain-text CV
-      </Link>
+      <nav aria-label="Skip links">
+        <Link href="/cv" className="skip-link">
+          Skip to plain-text CV
+        </Link>
+      </nav>
 
       {/* Server-rendered summary for search engines and screen readers; the OS below is client-only. */}
-      <div className="sr-only">
+      <section className="sr-only" aria-label="About">
         <h1>
           {profile.name} — {profile.role} ({profile.stackLine})
         </h1>
         <p>{resumeEn.summary}</p>
-      </div>
+      </section>
 
       <noscript>
         <p style={{ padding: 24 }}>

@@ -1,7 +1,8 @@
 import { Bricolage_Grotesque, JetBrains_Mono, Onest, Press_Start_2P } from "next/font/google";
 
+// `subsets` only controls preloading; other ranges still load on demand via unicode-range.
 export const display = Bricolage_Grotesque({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   // variable weight 200–800 + optical size, as in the prototype (opsz 12..96)
   axes: ["opsz"],
   variable: "--font-bricolage",
@@ -19,7 +20,7 @@ export const displayCyr = Onest({
 });
 
 export const mono = JetBrains_Mono({
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-jetbrains",
   display: "swap",

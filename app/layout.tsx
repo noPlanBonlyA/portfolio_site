@@ -4,11 +4,8 @@ import type { ReactNode } from "react";
 import { profile } from "@/content/profile";
 
 import { fontVars } from "./fonts";
+import { siteUrl } from "./site";
 import "./globals.css";
-
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
 
 const title = `${profile.name} — ${profile.role}`;
 const description =

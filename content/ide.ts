@@ -36,15 +36,15 @@ export interface IdeTheme {
   name: string;
   bg: string; panel: string; text: string; muted: string; dim: string; line: string; sel: string;
   accent: string; on: string;
-  /** Syntax colours: keyword, property, comment, string. */
+  /** Syntax colours: keyword, property, comment, string (all ≥ 4.5:1 on bg). */
   k: string; p: string; c: string; s: string;
 }
 
 export const themes: Record<ThemeId, IdeTheme> = {
-  andrey: { name: "Andrey Dark", bg: "#0b0b0c", panel: "#0f0f11", text: "#ecebe6", muted: "#8d8c86", dim: "#55544f", line: "rgba(236,235,230,.1)", sel: "#18181b", accent: ACCENT, on: "#0b0b0c", k: "#ff8f70", p: "#8ec5ff", c: "#76756f", s: ACCENT },
+  andrey: { name: "Andrey Dark", bg: "#0b0b0c", panel: "#0f0f11", text: "#ecebe6", muted: "#8d8c86", dim: "#55544f", line: "rgba(236,235,230,.1)", sel: "#18181b", accent: ACCENT, on: "#0b0b0c", k: "#ff8f70", p: "#8ec5ff", c: "#85847e", s: ACCENT },
   dracula: { name: "Dracula", bg: "#282a36", panel: "#21222c", text: "#f8f8f2", muted: "#a9abc8", dim: "#5f6380", line: "rgba(248,248,242,.1)", sel: "#343746", accent: "#bd93f9", on: "#21222c", k: "#ff79c6", p: "#8be9fd", c: "#8590c0", s: "#f1fa8c" },
   monokai: { name: "Monokai", bg: "#272822", panel: "#1e1f1c", text: "#f8f8f2", muted: "#a8a89a", dim: "#64655c", line: "rgba(248,248,242,.1)", sel: "#3e3d32", accent: "#a6e22e", on: "#1e1f1c", k: "#f92672", p: "#66d9ef", c: "#948f78", s: "#e6db74" },
-  solarized: { name: "Solarized Light", bg: "#fdf6e3", panel: "#eee8d5", text: "#073642", muted: "#586e75", dim: "#93a1a1", line: "rgba(7,54,66,.14)", sel: "#e4ddc8", accent: "#1f6fa8", on: "#fdf6e3", k: "#cb4b16", p: "#1f6fa8", c: "#7b8b8d", s: "#5f7000" },
+  solarized: { name: "Solarized Light", bg: "#fdf6e3", panel: "#eee8d5", text: "#073642", muted: "#586e75", dim: "#93a1a1", line: "rgba(7,54,66,.14)", sel: "#e4ddc8", accent: "#1f6fa8", on: "#fdf6e3", k: "#b8430f", p: "#1f6fa8", c: "#5f7173", s: "#5f7000" },
 };
 
 export const themeOrder: ThemeId[] = ["andrey", "dracula", "monokai", "solarized"];

@@ -10,7 +10,7 @@
   --text-2: #d9d8d2;
   --text-3: #b9b8b1;
   --muted: #8d8c86;
-  --dim: #6f6e69;
+  --dim: #84837d; /* ≥ 4.5:1 on --bg for small hint text */
   --line: rgba(236, 235, 230, 0.1);
   --line-2: rgba(236, 235, 230, 0.16);
 
