@@ -1,0 +1,554 @@
+/* ---------- frame ---------- */
+.win {
+  position: absolute;
+  background: var(--bg-raised);
+  border: 1px solid rgba(236, 235, 230, 0.14);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: winin 0.35s var(--ease-out) both;
+}
+
+.win[hidden] {
+  display: none;
+}
+
+@keyframes winin {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-panel);
+  user-select: none;
+  touch-action: none;
+  cursor: grab;
+}
+
+.bar:active {
+  cursor: grabbing;
+}
+
+.tl {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3a3a3d;
+  transition: background 0.2s;
+}
+
+.tlClose:hover,
+.tlClose:focus-visible {
+  background: #ff5f57;
+}
+
+.title {
+  flex: 1;
+  margin-right: 52px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.term {
+  left: 22%;
+  top: 12%;
+  width: min(660px, calc(100% - 32px));
+}
+
+.task {
+  left: 46%;
+  top: 18%;
+  width: min(560px, calc(100% - 32px));
+}
+
+.msg {
+  left: 34%;
+  top: 14%;
+  width: min(400px, calc(100% - 32px));
+}
+
+.music {
+  left: 57%;
+  top: 50%;
+  width: min(340px, calc(100% - 32px));
+}
+
+.trash {
+  left: 40%;
+  top: 28%;
+  width: min(460px, calc(100% - 32px));
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.right {
+  text-align: right;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- terminal ---------- */
+.termOut {
+  height: min(340px, 42vh);
+  overflow: auto;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  background: #0e0e10;
+  cursor: text;
+}
+
+.line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.k_cmd {
+  color: var(--text);
+}
+
+.k_out {
+  color: var(--text-3);
+}
+
+.k_acc {
+  color: var(--accent);
+}
+
+.k_err {
+  color: var(--danger);
+}
+
+.k_dim {
+  color: #76756f;
+}
+
+.prompt {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ps1 {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.termIn {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--text);
+  caret-color: var(--accent);
+}
+
+/* ---------- task manager ---------- */
+.procHead,
+.proc {
+  display: grid;
+  grid-template-columns: 1.3fr 2fr 56px;
+  gap: 12px;
+  align-items: center;
+  padding: 9px 14px;
+}
+
+.procHead {
+  padding-block: 10px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.procs,
+.files {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.procs > li,
+.files > li {
+  border-bottom: 1px solid rgba(236, 235, 230, 0.06);
+}
+
+.proc {
+  width: 100%;
+  transition: background 0.15s;
+}
+
+.proc:hover,
+.trashItem:hover,
+.procOn {
+  background: rgba(236, 235, 230, 0.06);
+}
+
+.meter {
+  height: 8px;
+  background: rgba(236, 235, 230, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  transition: width 1.2s var(--ease-out);
+}
+
+.usedIn {
+  padding: 0 14px 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.taskFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.danger {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 122, 89, 0.5);
+  color: var(--danger);
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.danger:hover {
+  background: var(--danger);
+  color: var(--on-light);
+}
+
+.taskMsg {
+  min-height: 30px;
+  padding: 4px 14px 12px;
+  font-size: 12px;
+  color: var(--danger);
+}
+
+/* ---------- messages ---------- */
+.chat {
+  height: min(320px, 38vh);
+  overflow: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #0e0e10;
+}
+
+.bubble {
+  align-self: flex-start;
+  max-width: 84%;
+  padding: 9px 12px;
+  border-radius: 14px;
+  background: #202024;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.35;
+  white-space: pre-line;
+  animation: bubble 0.3s var(--ease-out) both;
+}
+
+.me {
+  align-self: flex-end;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@keyframes bubble {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.dots {
+  align-self: flex-start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #202024;
+}
+
+.dots span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  border-radius: 50%;
+  background: var(--muted);
+  animation: dot 1s infinite;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes dot {
+  0%,
+  60%,
+  100% {
+    transform: none;
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 12px 0;
+}
+
+.chip,
+.chipBox {
+  border: 1px solid rgba(236, 235, 230, 0.2);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.chip {
+  min-height: 30px;
+  padding: 6px 10px;
+  font-size: 11px;
+  border-radius: 15px;
+}
+
+.chip:hover,
+.chipBox:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+
+.compose {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px 12px;
+}
+
+.msgIn {
+  flex: 1;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0 12px;
+  background: var(--bg-input);
+  border: 1px solid rgba(236, 235, 230, 0.14);
+  border-radius: 20px;
+  outline: none;
+}
+
+.msgIn:focus-visible {
+  border-color: var(--accent);
+}
+
+.send {
+  flex: 0 0 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.footnote {
+  padding: 0 12px 10px;
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.06em;
+}
+
+/* ---------- now coding ---------- */
+.player {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+}
+
+.eq {
+  flex: 0 0 64px;
+  height: 64px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--accent);
+}
+
+.eq span {
+  width: 6px;
+  height: 18%;
+  background: var(--on-light);
+  border-radius: 2px;
+  animation: eq 0.8s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.playing span {
+  animation-play-state: running;
+}
+
+@keyframes eq {
+  from {
+    height: 18%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.track {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.trackTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackArtist {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.progress {
+  height: 4px;
+  margin-top: 12px;
+  background: rgba(236, 235, 230, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress > div {
+  height: 100%;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  animation: prog 180s linear infinite;
+}
+
+@keyframes prog {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.playerCtl {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.play {
+  width: 52px;
+  height: 44px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.spotify {
+  flex: 1 1 auto;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid rgba(236, 235, 230, 0.2);
+  border-radius: 22px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.spotify:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+
+/* ---------- trash ---------- */
+.trashItem {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  transition: background 0.15s;
+}
+
+.trashMsg {
+  min-height: 52px;
+  padding: 12px 14px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+.trashFoot {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 14px 14px;
+}
+
+.chipBox {
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-size: 12px;
+}

@@ -1,5 +1,7 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import { DesktopIcons, OpenIdeNotice } from "./DesktopIcons";
 import { Dock } from "./Dock";
 import { QuestPill, Sticker } from "./Extras";
@@ -14,9 +16,11 @@ interface Props {
   hidden: boolean;
   /** IDE / resume on top: zoom + blur the desktop behind it. */
   dimmed: boolean;
+  /** App windows live inside the desktop layer so they blur with it behind the IDE. */
+  children?: ReactNode;
 }
 
-export function Desktop({ hidden, dimmed }: Props) {
+export function Desktop({ hidden, dimmed, children }: Props) {
   return (
     <div className={`${styles.desktop} ${dimmed ? styles.dimmed : ""}`} inert={hidden}>
       <Wallpaper />
@@ -29,6 +33,7 @@ export function Desktop({ hidden, dimmed }: Props) {
         <QuestPill />
         <GhostCursor />
       </main>
+      {children}
       <Dock />
     </div>
   );

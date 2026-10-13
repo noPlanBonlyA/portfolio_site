@@ -16,6 +16,7 @@ import styles from "./os.module.css";
 
 // Loaded right after unlock (while the visitor looks at the desktop), so it's ready to grow out of its icon.
 const Ide = dynamic(() => import("./ide/Ide"), { ssr: false });
+const Windows = dynamic(() => import("./windows/Windows"), { ssr: false });
 const ResumeView = dynamic(() => import("./resume/ResumeView"), { ssr: false });
 
 let consoleShown = false;
@@ -48,7 +49,9 @@ export default function DesktopOS() {
 
   return (
     <div className={styles.os} style={vars}>
-      <Desktop hidden={boot !== "on" || phase !== "desktop"} dimmed={phase !== "desktop"} />
+      <Desktop hidden={boot !== "on" || phase !== "desktop"} dimmed={phase !== "desktop"}>
+        {boot === "on" && <Windows />}
+      </Desktop>
       {boot === "on" && <Ide />}
       {boot === "on" && phase === "resume" && <ResumeView />}
       <TrashConfirm />
