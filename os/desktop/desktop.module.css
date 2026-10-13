@@ -789,3 +789,7 @@
     gap: 14px;
   }
 }
+
+[data-retro] .wp {
+  font-size: 9vw;
+}

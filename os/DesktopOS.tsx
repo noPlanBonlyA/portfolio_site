@@ -5,6 +5,7 @@ import { useEffect, type CSSProperties } from "react";
 
 import { themes } from "@/content/ide";
 import { consoleSecret } from "@/content/os";
+import { useGlobalKeys } from "@/hooks/useGlobalKeys";
 import { useOs } from "@/store/os";
 
 import { Bios } from "./boot/Bios";
@@ -17,6 +18,7 @@ import styles from "./os.module.css";
 // Loaded right after unlock (while the visitor looks at the desktop), so it's ready to grow out of its icon.
 const Ide = dynamic(() => import("./ide/Ide"), { ssr: false });
 const Windows = dynamic(() => import("./windows/Windows"), { ssr: false });
+const Overlays = dynamic(() => import("./overlay/Overlays"), { ssr: false });
 const ResumeView = dynamic(() => import("./resume/ResumeView"), { ssr: false });
 
 let consoleShown = false;
@@ -36,6 +38,8 @@ export default function DesktopOS() {
   const phase = useOs((s) => s.phase);
   const theme = useOs((s) => s.theme);
   const hydrate = useOs((s) => s.hydrate);
+  const retro = useOs((s) => s.retro);
+  useGlobalKeys();
 
   useEffect(() => {
     hydrate();
@@ -48,7 +52,7 @@ export default function DesktopOS() {
   const vars = { "--accent": t.accent, "--on-accent": t.on } as CSSProperties;
 
   return (
-    <div className={styles.os} style={vars}>
+    <div className={styles.os} data-retro={retro || undefined} style={vars}>
       <Desktop hidden={boot !== "on" || phase !== "desktop"} dimmed={phase !== "desktop"}>
         {boot === "on" && <Windows />}
       </Desktop>
@@ -56,6 +60,7 @@ export default function DesktopOS() {
       {boot === "on" && phase === "resume" && <ResumeView />}
       <TrashConfirm />
       <GlobalToast />
+      {boot === "on" && <Overlays />}
       {boot === "lock" && <LockScreen />}
       {boot === "bios" && <Bios />}
     </div>

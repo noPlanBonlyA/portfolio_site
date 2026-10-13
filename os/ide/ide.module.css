@@ -902,3 +902,7 @@
     font-size: clamp(48px, min(9.4vw, 15vh), 150px);
   }
 }
+
+[data-retro] .hero {
+  font-size: 9vw;
+}

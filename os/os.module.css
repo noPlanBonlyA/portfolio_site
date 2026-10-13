@@ -7,6 +7,14 @@
   font-family: var(--font-mono);
 }
 
+/* 8-bit mode (Konami): pixel font, square corners everywhere. */
+.os[data-retro],
+.os[data-retro] * {
+  font-family: var(--font-pixel), monospace !important;
+  letter-spacing: 0 !important;
+  border-radius: 0 !important;
+}
+
 @media print {
   .os {
     position: static;

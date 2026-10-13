@@ -46,6 +46,9 @@ interface OsState {
   run: { lines: { text: string; kind: RunLine["kind"] | "bar" }[] };
   /** Matches of the selected word in the editor (status bar). */
   hlCount: number;
+  sleeping: boolean;
+  /** Achievements guide: a lime arrow flies to [data-quest=target]. `n` restarts the flight. */
+  guide: { target: string; label: string; n: number } | null;
 
   hydrate: () => void;
   setBoot: (boot: Boot) => void;
@@ -74,6 +77,9 @@ interface OsState {
   runFile: () => void;
   setHlCount: (n: number) => void;
   summarize: () => void;
+  setSleeping: (sleeping: boolean) => void;
+  setGuide: (guide: { target: string; label: string } | null) => void;
+  goQuest: (id: QuestId) => void;
   askTrash: () => void;
   keepPhoto: () => void;
   deletePhoto: () => void;
@@ -123,6 +129,8 @@ export const useOs = create<OsState>()((set, get) => ({
   termTab: "terminal",
   run: { lines: [] },
   hlCount: 0,
+  sleeping: false,
+  guide: null,
 
   /** Runs once on mount: restores achievements and skips BIOS for returning visitors. */
   hydrate: () => {
@@ -178,8 +186,11 @@ export const useOs = create<OsState>()((set, get) => ({
     get().showToast(sound ? osCopy.soundOn : osCopy.soundOff);
   },
   toggleRetro: () => {
-    if (!get().retro) get().markDone("konami");
-    set((s) => ({ retro: !s.retro }));
+    const retro = !get().retro;
+    // First time: the achievement toast announces it; afterwards a plain on/off toast.
+    if (retro && !get().done.konami) get().markDone("konami");
+    else get().showToast(retro ? osCopy.retroOn : osCopy.retroOff);
+    set({ retro });
   },
 
   setPal: (palOpen) => {
@@ -305,6 +316,73 @@ export const useOs = create<OsState>()((set, get) => ({
       set({ phase: "shrink" });
       summarizeTimer = setTimeout(() => set({ phase: "resume" }), 650);
     }, 1000);
+  },
+
+  setSleeping: (sleeping) => {
+    if (sleeping === get().sleeping) return;
+    if (sleeping) get().markDone("sleep");
+    set({ sleeping });
+  },
+
+  setGuide: (guide) => set((s) => ({ guide: guide && { ...guide, n: (s.guide?.n ?? 0) + 1 } })),
+
+  /** Achievements → "show me": navigate to the right screen, then fly the guide to the target. */
+  goQuest: (id) => {
+    const q = quests.find((x) => x.id === id);
+    if (!q) return;
+    const s = get();
+    set({ questsOpen: false });
+    const inIde = s.phase === "ide";
+    const toDesk = () => s.phase !== "desktop" && s.setPhase("desktop");
+    const ideDelay = inIde ? 350 : 1000;
+    let delay = 750;
+    switch (id) {
+      case "run":
+        s.openIde("p4");
+        delay = ideDelay;
+        break;
+      case "highlight":
+        s.openIde("p0");
+        delay = ideDelay;
+        break;
+      case "summarize":
+      case "theme":
+        if (!inIde) s.openIde();
+        delay = ideDelay;
+        break;
+      case "lang":
+        s.goResume();
+        delay = 1100;
+        break;
+      case "hire":
+      case "konami":
+        s.openWin("term");
+        delay = 550;
+        break;
+      case "coffee":
+        s.openWin("task");
+        delay = 550;
+        break;
+      case "bot":
+        s.openWin("msg");
+        delay = 550;
+        break;
+      case "music":
+        s.openWin("music");
+        delay = 550;
+        break;
+      case "dig":
+        s.openWin("trash");
+        delay = 550;
+        break;
+      default:
+        toDesk();
+    }
+    if (q.toast) s.showToast(q.toast);
+    if (q.target && q.guide) {
+      const { target, guide: label } = q;
+      setTimeout(() => get().setGuide({ target, label }), delay);
+    }
   },
 
   askTrash: () => {

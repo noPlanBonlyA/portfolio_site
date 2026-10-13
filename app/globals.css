@@ -212,6 +212,12 @@ ul {
   color: inherit;
 }
 
+/* Custom cursor replaces the native one inside the OS (fine pointers only, set by Cursor.tsx). */
+html[data-cursor="custom"] body,
+html[data-cursor="custom"] body * {
+  cursor: none !important;
+}
+
 /* ---------- motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,
