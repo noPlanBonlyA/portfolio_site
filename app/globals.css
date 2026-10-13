@@ -161,6 +161,24 @@ ul {
   }
 }
 
+.shimmer {
+  background: linear-gradient(90deg, var(--dim) 0%, var(--text) 50%, var(--dim) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 2.4s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
 /* ---------- motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -174,5 +192,11 @@ ul {
 
   .caret {
     animation: none !important;
+  }
+
+  .shimmer {
+    animation: none !important;
+    color: var(--text-3);
+    background: none;
   }
 }

@@ -17,9 +17,6 @@ export default function Home() {
           {profile.name} — {profile.role} ({profile.stackLine})
         </h1>
         <p>{resumeEn.summary}</p>
-        <p>
-          <Link href="/cv">Read the full CV</Link>
-        </p>
       </div>
 
       <noscript>

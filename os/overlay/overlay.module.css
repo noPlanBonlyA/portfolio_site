@@ -1,0 +1,98 @@
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  animation: fade 0.2s ease both;
+}
+
+.dialog {
+  width: min(360px, 100%);
+  margin-top: -12vh;
+  padding: 22px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line-2);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  animation: pop 0.3s var(--ease-out) both;
+}
+
+.dialogTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.dialogBody {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-3);
+}
+
+.dialogActions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.primary,
+.secondary {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 8px;
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.secondary {
+  border: 1px solid var(--line-2);
+}
+
+.secondary:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* temporary stub until the IDE / resume land (steps 3–4) */
+.stub {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.stubCard {
+  padding: 28px 32px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+}
+
+.stubCard p + p {
+  margin-top: 16px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(8px);
+  }
+}
